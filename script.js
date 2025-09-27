@@ -12,14 +12,28 @@ function rollDice() {
   movePlayer();
 }
 
-function createBoard() {
-  const board = document.getElementById("board");
-  for (let i = 0; i < boardSize; i++) {
-    const cell = document.createElement("div");
-    cell.classList.add("cell");
-    cell.innerText = i + 1;
-    board.appendChild(cell);
+function createBoard(){
+  $board().innerHTML = "";
+
+  // Erstes Feld = START
+  const startCell = document.createElement("div");
+  startCell.className = "cell start";
+  startCell.textContent = "START";
+  $board().appendChild(startCell);
+
+  // Zahlenfelder 1 bis boardSize-2
+  for (let i=1; i<boardSize-1; i++){
+    const d = document.createElement("div");
+    d.className = "cell";
+    d.textContent = i;   // echte Zahl
+    $board().appendChild(d);
   }
+
+  // Letztes Feld = META
+  const finishCell = document.createElement("div");
+  finishCell.className = "cell finish";
+  finishCell.textContent = "META";
+  $board().appendChild(finishCell);
 }
 
 function movePlayer() {
