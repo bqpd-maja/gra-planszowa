@@ -41,5 +41,8 @@ function movePlayer() {
   cells.forEach(cell => cell.classList.remove("active"));
   cells[position].classList.add("active");
 }
-
+// Spielfeld sofort beim Laden erzeugen
+window.onload = () => {
+  createBoard();
+};
 window.onload = createBoard;
